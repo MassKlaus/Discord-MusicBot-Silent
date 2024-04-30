@@ -83,7 +83,7 @@ const command = new SlashCommand()
 				])
 				.setDescription(`[${title}](${song.uri})`)
 				.setImage("attachment://card.png");
-			return interaction.editReply({ embeds: [embed], files: [attachment] });
+			return interaction.editReply({ embeds: [embed], files: [attachment], flags: [ 4096 ] });
 		}
 
 		const queueGroups = load.chunk(queue, 10);
@@ -147,6 +147,7 @@ const command = new SlashCommand()
 			embeds: [embed, queueEmbed],
 			files: [attachment],
 			components: [getButtons(currentPage, maxPage)],
+			flags: [ 4096 ]
 		});
 
 		const filter = (i) => i.user.id === interaction.user.id;

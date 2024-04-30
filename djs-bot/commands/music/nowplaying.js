@@ -81,6 +81,6 @@ const command = new SlashCommand()
       ])
       .setDescription(`[${title}](${song.uri})`)
       .setImage("attachment://card.png");
-    return interaction.reply({ embeds: [embed], files: [attachment] });
+    return interaction.reply({ embeds: [embed], files: [attachment], flags: [ 4096 ] });
   });
 module.exports = command;
