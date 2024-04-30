@@ -70,7 +70,7 @@ const command = new SlashCommand()
     var title = title.replace(/\[/g, "");
     const embed = new EmbedBuilder()
       .setColor(client.config.embedColor)
-      .setAuthor({ name: "Now Playing", iconURL: client.config.iconURL })
+      .setAuthor({ name: "Now Playing - 1", iconURL: client.config.iconURL })
       // show who requested the song via setField, also show the duration of the song
       .setFields([
         {

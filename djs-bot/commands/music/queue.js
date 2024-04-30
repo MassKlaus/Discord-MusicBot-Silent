@@ -51,7 +51,7 @@ const command = new SlashCommand()
 			});
 		}
 
-		await interaction.deferReply().catch(() => {});
+		await interaction.deferReply().catch(() => { });
 
 		const queue = player.queue;
 		if (!queue.length) {
@@ -83,7 +83,7 @@ const command = new SlashCommand()
 				])
 				.setDescription(`[${title}](${song.uri})`)
 				.setImage("attachment://card.png");
-			return interaction.editReply({ embeds: [embed], files: [attachment], flags: [ 4096 ] });
+			return interaction.editReply({ embeds: [embed], files: [attachment], flags: [4096] });
 		}
 
 		const queueGroups = load.chunk(queue, 10);
@@ -128,12 +128,9 @@ const command = new SlashCommand()
 				currentGroup
 					.map(
 						(song, index) =>
-							`**${
-								currentPage * 10 + index + 1
-							}**. [${escapeMarkdown(song.title)}](${
-								song.uri
-							}) \`[${pms(song.duration)}]\` | ${
-								song.requester
+							`**${currentPage * 10 + index + 1
+							}**. [${escapeMarkdown(song.title)}](${song.uri
+							}) \`[${pms(song.duration)}]\` | ${song.requester
 							}`
 					)
 					.join("\n")
@@ -147,7 +144,7 @@ const command = new SlashCommand()
 			embeds: [embed, queueEmbed],
 			files: [attachment],
 			components: [getButtons(currentPage, maxPage)],
-			flags: [ 4096 ]
+			flags: [4096]
 		});
 
 		const filter = (i) => i.user.id === interaction.user.id;
@@ -171,8 +168,7 @@ const command = new SlashCommand()
 					currentGroup
 						.map(
 							(song, index) =>
-								`**${
-									currentPage * 10 + index + 1
+								`**${currentPage * 10 + index + 1
 								}**. [${escapeMarkdown(
 									song.title
 								)}](${song.uri}) \`[${pms(
@@ -186,6 +182,7 @@ const command = new SlashCommand()
 			await button.update({
 				embeds: [embed, queueEmbed],
 				components: [getButtons(currentPage, maxPage)],
+				flags: [4096]
 			});
 		});
 	});
