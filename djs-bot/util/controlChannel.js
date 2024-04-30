@@ -1,4 +1,4 @@
-const { Message } = require("discord.js");
+const { Message, MessageFlags } = require("discord.js");
 const { getClient } = require("../bot");
 const { controlChannelMessage, redEmbed, trackStartedEmbed } = require("./embeds");
 
@@ -155,7 +155,10 @@ const updateNowPlaying = async (player, track) => {
 
 		const nowPlaying = await client.channels.cache
 			.get(player.textChannel)
-			.send({ embeds: [emb] })
+			.send({
+				embeds: [emb],
+				flags: MessageFlags.SuppressNotifications
+			})
 			.catch(client.warn);
 
 		player.setNowplayingMessage(client, nowPlaying);
